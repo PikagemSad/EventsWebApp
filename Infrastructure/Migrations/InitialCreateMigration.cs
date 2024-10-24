@@ -32,7 +32,7 @@ public partial class InitialCreate : Migration
                 Email = table.Column<string>(nullable: false),
                 EventId = table.Column<int>(nullable: false),
                 RegistrationDate = table.Column<DateTime>(nullable: false),
-                BirthdayDate = table.Column<DateTime>(nullable: false),
+                BirthDate = table.Column<DateTime>(nullable: false),
             },
             constraints: table =>
             {

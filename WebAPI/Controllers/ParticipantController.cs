@@ -54,20 +54,14 @@ public class ParticipantsController : ControllerBase
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteParticipant(int id)
     {
-        try
-        {  
-            var participant = await _participantRepository.GetParticipantByIdAsync(id);
-            if (participant == null)
-            {
-                return NotFound($"Participant with ID {id} not found."); 
-            }
+        var participant = await _participantRepository.GetParticipantByIdAsync(id);
 
-            await _participantRepository.RemoveParticipantAsync(id); 
-            return NoContent(); 
-        }
-        catch (Exception ex)
+        if (participant == null)
         {
-            return StatusCode(500, ex.Message); 
+            return NotFound($"Participant with ID {id} not found.");
         }
+
+        await _participantRepository.RemoveParticipantAsync(id);
+        return NoContent();
     }
 }

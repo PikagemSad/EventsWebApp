@@ -36,8 +36,9 @@ public class ParticipantRepository : IParticipantRepository
 
     public async Task<Participant> GetParticipantByIdAsync(int id)
     {
-        return await _context.Participants.FindAsync(id);
+        return await _context.Participants.SingleOrDefaultAsync(p => p.Id == id);
     }
+
 
     public async Task UpdateParticipantAsync(Participant participant)
     {
